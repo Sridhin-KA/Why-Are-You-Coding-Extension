@@ -1,0 +1,72 @@
+{
+  "name": "why-are-you-coding",
+  "displayName": "Why Are You Coding",
+ "description": "A fun VS Code extension that roasts your code and lets you choose how brutally you want to be roasted.",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.133.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:why-are-you-coding.roast",
+     "onCommand:why-are-you-coding.roastCode",
+     "onCommand:why-are-you-coding.chooseLevel" 
+],
+  "main": "./dist/extension.js",
+ "contributes": {
+    "commands": [
+    {
+        "command": "why-are-you-coding.roast",
+        "title": "Why Are You Coding: Roast Me"
+    },
+    {
+        "command": "why-are-you-coding.roastCode",
+        "title": "🔥 Roast This Code"
+    },
+    {
+        "command": "why-are-you-coding.chooseLevel",
+        "title": "🎚️ Choose Roast Level"
+    }
+],
+    "menus": {
+        "editor/context": [
+            {
+                "command": "why-are-you-coding.roastCode",
+                "when": "editorTextFocus"
+            }
+        ]
+    }
+},
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+   "@types/vscode": "^1.133.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "24.x",
+    "typescript-eslint": "^8.61.1",
+    "eslint": "^10.5.0",
+    "esbuild": "^0.28.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^6.0.3",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.0.0"
+  },
+  "overrides": {
+    "diff": "^8.0.4",
+    "serialize-javascript": "^7.0.6"
+  }
+}
