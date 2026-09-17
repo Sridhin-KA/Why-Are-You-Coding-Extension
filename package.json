@@ -4,6 +4,7 @@
  "description": "A fun VS Code extension that roasts your code and lets you choose how brutally you want to be roasted.",
  "icon": "icon.png",
   "version": "1.0.0",
+  "publisher": "Sidhuzz",
   "repository": {
   "type": "git",
   "url": "https://github.com/Sridhin-KA/Why-Are-You-Coding-Extension.git"
